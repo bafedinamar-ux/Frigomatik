@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
@@ -9,6 +8,9 @@
   <title>Reparação de Frio Industrial e Hotelaria em Lisboa e Margem Sul | Frigomatik</title>
   <meta name="description" content="Assistência técnica urgente 24h a frio industrial e equipamentos de hotelaria em Lisboa e Margem Sul. Armários frigoríficos, bancadas inox, vitrines, máquinas de gelo e câmaras de congelação.">
   <link rel="canonical" href="https://frigomatik.pt/">
+
+  <!-- Favicon embutido em SVG para evitar erro 404 -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0c'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-size='62'%3E%E2%9D%84%EF%B8%8F%3C/text%3E%3C/svg%3E">
 
   <!-- Mobile & PWA -->
   <meta name="theme-color" content="#000000">
@@ -46,8 +48,8 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "38.7223",
-          "longitude": "-9.1393"
+          "latitude": 38.7223,
+          "longitude": -9.1393
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
@@ -64,7 +66,10 @@
           {"@type": "City", "name": "Oeiras"},
           {"@type": "City", "name": "Odivelas"},
           {"@type": "City", "name": "Almada"},
-          {"@type": "City", "name": "Seixal"}
+          {"@type": "City", "name": "Seixal"},
+          {"@type": "City", "name": "Barreiro"},
+          {"@type": "City", "name": "Montijo"},
+          {"@type": "City", "name": "Setúbal"}
         ]
       },
       {
@@ -91,6 +96,7 @@
     ]
   }
   </script>
+
   <style>
     :root {
       --bg: #000000;
@@ -118,32 +124,50 @@
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1.45;
-      padding: clamp(12px, 3vw, 24px);
-      padding-bottom: 90px;
+      padding-bottom: 110px;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* Barra Superior 24H Full-Width sem colisão */
+    .top-urgency-bar {
+      background: linear-gradient(90deg, #1c1c1e, #2c2c2e);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f5f5f7;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
+      padding: clamp(12px, 3vw, 24px);
     }
 
-    /* Navigation Bar */
+    /* Navigation Bar sincronizada abaixo da Top Bar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
-      background: rgba(20, 20, 22, 0.7);
+      background: rgba(20, 20, 22, 0.78);
       border: 1px solid var(--border);
       border-radius: 40px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       margin-bottom: 24px;
       position: sticky;
-      top: 10px;
-      z-index: 100;
+      top: 48px;
+      z-index: 1000;
     }
 
     .logo {
@@ -200,6 +224,7 @@
       border-radius: 50%;
       box-shadow: 0 0 8px var(--green);
       animation: pulse 2s infinite;
+      flex-shrink: 0;
     }
 
     @keyframes pulse {
@@ -295,6 +320,96 @@
     .btn-phone:hover {
       background: rgba(255, 255, 255, 0.18);
       border-color: #fff;
+    }
+
+    /* Trust Grid */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .trust-card {
+      background: rgba(25, 25, 28, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Diagnostic & Zone Boxes */
+    .interactive-box {
+      margin: 24px 0;
+      padding: 24px;
+      background: rgba(20, 20, 22, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+    }
+
+    .interactive-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .interactive-btn:hover {
+      background: rgba(41, 151, 255, 0.15);
+      border-color: var(--accent);
+    }
+
+    /* Panic Box */
+    .panic-box {
+      background: linear-gradient(135deg, rgba(255, 69, 58, 0.14), rgba(18, 18, 22, 0.95));
+      border: 1px solid rgba(255, 69, 58, 0.45);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 30px auto;
+      max-width: 1000px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .scarcity-pill {
+      background: rgba(255, 69, 58, 0.22);
+      color: #ff9f0a;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 69, 58, 0.35);
+    }
+
+    .panic-btn {
+      display: inline-block;
+      background: var(--green);
+      color: #000;
+      padding: 18px 36px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 1.15rem;
+      margin-top: 15px;
+      box-shadow: 0 6px 25px rgba(48, 209, 88, 0.5);
+      text-transform: uppercase;
+      transition: transform 0.2s;
+    }
+
+    .panic-btn:hover {
+      transform: scale(1.03);
     }
 
     /* Bento Grid Structure */
@@ -501,18 +616,77 @@
       transform: translateY(-1px);
     }
 
-    /* Barra Flutuante Fixa para Telemóveis */
+    /* Pop-up Dinâmico de Urgência Comercial */
+    #service-popup {
+      position: fixed;
+      top: 118px;
+      right: 20px;
+      background: rgba(20, 20, 22, 0.94);
+      border: 1px solid var(--border);
+      color: #f5f5f7;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 0.82rem;
+      z-index: 990;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 320px;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Prova Social Dinâmica */
+    #social-proof-popup {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1990;
+      background: #1e293b;
+      border: 1px solid rgba(48, 209, 88, 0.4);
+      border-left: 5px solid var(--green);
+      color: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      max-width: 340px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    #social-proof-popup.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Assistente Virtual Flutuante */
+    #ai-assistant-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2010;
+    }
+
+    /* Barra Flutuante Fixa para Telemóveis (oculta em Desktop para evitar redundância) */
     .mobile-sticky-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 15, 18, 0.92);
+      background: rgba(15, 15, 18, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      display: none;
       gap: 10px;
       z-index: 2000;
     }
@@ -546,21 +720,25 @@
 
     @media (max-width: 900px) {
       .locations-grid { grid-template-columns: 1fr; }
-      nav { border-radius: 20px; flex-wrap: wrap; gap: 10px; }
+      nav { border-radius: 20px; flex-wrap: wrap; gap: 10px; top: 58px; }
       .nav-actions { width: 100%; justify-content: space-between; }
-      body { padding: 10px; }
       .hero-ctas { flex-direction: column; }
       .btn-whatsapp, .btn-phone { width: 100%; }
+      .mobile-sticky-bar { display: flex; }
+      /* Sobe os widgets flutuantes em mobile para nunca colidirem com a barra fixa inferior */
+      #ai-assistant-widget { bottom: 84px; right: 14px; }
+      #social-proof-popup { bottom: 84px; left: 14px; right: 14px; max-width: calc(100vw - 28px); }
+      #service-popup { display: none; }
     }
   </style>
 </head>
 
 <body>
   <!-- BARRA SUPERIOR DE URGÊNCIA 24H -->
-  <div style="background: linear-gradient(90deg, #1c1c1e, #2c2c2e); border-bottom: 1px solid rgba(255,255,255,0.1); color: #f5f5f7; padding: 10px 16px; font-size: 0.8rem; text-align: center; position: sticky; top: 0; z-index: 1001; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;">
-    <span style="width: 8px; height: 8px; background: #30d158; border-radius: 50%; box-shadow: 0 0 8px #30d158; display: inline-block;"></span>
+  <div class="top-urgency-bar">
+    <span class="status-dot"></span>
     <span><strong>Piquete Frigomatik 24H:</strong> Evite perdas de stock e paragem da sua empresa! Linha Direta:</span>
-    <a href="tel:351931369411" style="color: #30d158; text-decoration: none; font-weight: 700;">931 369 411</a>
+    <a href="tel:+351931369411" style="color: #30d158; text-decoration: none; font-weight: 700;">931 369 411</a>
   </div>
 
   <div class="container">
@@ -568,7 +746,7 @@
     <nav>
       <div class="logo">FRIGOMATIK ®</div>
       <div class="nav-actions">
-        <a href="tel:931369411" class="nav-phone">📞 931 369 411</a>
+        <a href="tel:+351931369411" class="nav-phone">📞 931 369 411</a>
         <div class="status-badge">
           <div class="status-dot"></div>Piquete Ativo
         </div>
@@ -577,102 +755,98 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-      <span class="pill-hero">Assistência Técnica 24H · Frio Comercial, Restauração & Hotelaria</span>
+      <span class="pill-hero">Assistência Técnica 24H · Frio Comercial, Restauração &amp; Hotelaria</span>
       <h1>Reparação de Frio Industrial e Hotelaria em Lisboa e Margem Sul</h1>
       <p class="hero-sub">Intervenção urgente com a Frigomatik em câmaras de refrigeração e congelação, bancadas refrigeradas, armários inox, vitrines expositoras, máquinas de gelo e abatedores. Atendimento prioritário a restaurantes, hotéis, cafés, talhos e supermercados.</p>
       <div class="hero-ctas">
-        <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik!%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica%20urgente%20para%20equipamento%20de%20frio%20industrial%2Fhotelaria."
-          class="btn-whatsapp" target="_blank" rel="noopener">💬 Chamar Piquete Frigomatik WhatsApp (931 369 411)</a>
-        <a href="tel:931369411" class="btn-phone">📞 Ligar 931 369 411</a>
+        <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica%20urgente%20para%20equipamento%20de%20frio%20industrial/hotelaria."
+          class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 Chamar Piquete Frigomatik WhatsApp (931 369 411)</a>
+        <a href="tel:+351931369411" class="btn-phone">📞 Ligar 931 369 411</a>
       </div>
     </section>
 
     <!-- SELOS DE GARANTIA E CONFIANÇA -->
-    <div style="margin: 24px 0;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
-        
-        <div style="background: rgba(25, 25, 28, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px);">
-          <span style="font-size: 1.5rem;">⚡</span>
-          <div>
-            <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Chegada Urgente < 60 Min</div>
-            <div style="color: #86868b; font-size: 0.75rem;">Para evitar perdas de stock comercial.</div>
-          </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span style="font-size: 1.5rem;">⚡</span>
+        <div>
+          <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Chegada Urgente &lt; 60 Min</div>
+          <div style="color: #86868b; font-size: 0.75rem;">Para evitar perdas de stock comercial.</div>
         </div>
+      </div>
 
-        <div style="background: rgba(25, 25, 28, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px);">
-          <span style="font-size: 1.5rem;">🛠️</span>
-          <div>
-            <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Técnicos Certificados</div>
-            <div style="color: #86868b; font-size: 0.75rem;">Manuseamento de gases fluorados (F-Gas).</div>
-          </div>
+      <div class="trust-card">
+        <span style="font-size: 1.5rem;">🛠️</span>
+        <div>
+          <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Técnicos Certificados</div>
+          <div style="color: #86868b; font-size: 0.75rem;">Manuseamento de gases fluorados (F-Gas).</div>
         </div>
+      </div>
 
-        <div style="background: rgba(25, 25, 28, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px);">
-          <span style="font-size: 1.5rem;">🛡️</span>
-          <div>
-            <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Garantia Escrita Frigomatik</div>
-            <div style="color: #86868b; font-size: 0.75rem;">Peças originais e compressores industriais.</div>
-          </div>
+      <div class="trust-card">
+        <span style="font-size: 1.5rem;">🛡️</span>
+        <div>
+          <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Garantia Escrita Frigomatik</div>
+          <div style="color: #86868b; font-size: 0.75rem;">Peças originais e compressores industriais.</div>
         </div>
+      </div>
 
-        <div style="background: rgba(25, 25, 28, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px);">
-          <span style="font-size: 1.5rem;">🏢</span>
-          <div>
-            <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Faturação Comercial / PME</div>
-            <div style="color: #86868b; font-size: 0.75rem;">Relatório técnico para seguros e HACCP.</div>
-          </div>
+      <div class="trust-card">
+        <span style="font-size: 1.5rem;">🏢</span>
+        <div>
+          <div style="color: #fff; font-weight: 600; font-size: 0.85rem;">Faturação Comercial / PME</div>
+          <div style="color: #86868b; font-size: 0.75rem;">Relatório técnico para seguros e HACCP.</div>
         </div>
-
       </div>
     </div>
 
     <!-- CALCULADORA / DIAGNÓSTICO EXPRESSO DE SINTOMAS INDUSTRIAL -->
-    <div style="margin: 30px 0; padding: 24px; background: rgba(20, 20, 22, 0.9); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; backdrop-filter: blur(20px);">
+    <div class="interactive-box">
       <div style="text-align: center; margin-bottom: 16px;">
-        <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">🔍 Triagem Rápida de Avarias Industriais</h3>
-        <p style="color: #86868b; font-size: 0.82rem;">Selecione o problema do seu equipamento comercial para alertar diretamente a equipa técnica Frigomatik:</p>
+        <h2 style="color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px;">🔍 Triagem Rápida de Avarias Industriais</h2>
+        <p style="color: #86868b; font-size: 0.85rem;">Selecione o problema do seu equipamento comercial para alertar diretamente a equipa técnica Frigomatik:</p>
       </div>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
-        <button onclick="sendDiagnostic('Câmara Frigorífica: Temperatura alta / Alarme a apitar')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 12px; font-size: 0.8rem; cursor: pointer; text-align: left; transition: 0.2s;">
+        <button type="button" class="interactive-btn" onclick="sendDiagnostic('Câmara Frigorífica: Temperatura alta / Alarme a apitar')">
           ❄️ Câmara Frigorífica: Temp. Alta / Alarme
         </button>
-        <button onclick="sendDiagnostic('Bancada Inox / Armário: Não gela / Evaporador congelado')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 12px; font-size: 0.8rem; cursor: pointer; text-align: left; transition: 0.2s;">
+        <button type="button" class="interactive-btn" onclick="sendDiagnostic('Bancada Inox / Armário: Não gela / Evaporador congelado')">
           🧊 Bancada / Armário: Bloco de gelo
         </button>
-        <button onclick="sendDiagnostic('Máquina de Gelo: Não produz cubos / Fuga de água')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 12px; font-size: 0.8rem; cursor: pointer; text-align: left; transition: 0.2s;">
+        <button type="button" class="interactive-btn" onclick="sendDiagnostic('Máquina de Gelo: Não produz cubos / Fuga de água')">
           🧊 Máquina de Gelo: Não faz gelo / Fuga
         </button>
-        <button onclick="sendDiagnostic('Vitrine / Ilha de Congelação: Compressor ruidoso / Disjuntor dispara')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 12px; font-size: 0.8rem; cursor: pointer; text-align: left; transition: 0.2s;">
+        <button type="button" class="interactive-btn" onclick="sendDiagnostic('Vitrine / Ilha de Congelação: Compressor ruidoso / Disjuntor dispara')">
           ⚡ Vitrine / Ilha: Compressor / Quadro elétrico
         </button>
       </div>
     </div>
 
     <!-- VAGAS E ALERTA DE PIQUETE -->
-    <div style="margin: 0 auto 20px auto; padding: 0;">
+    <div style="margin: 0 auto 20px auto;">
       <div style="background: linear-gradient(135deg, rgba(48, 209, 88, 0.1), rgba(20, 20, 22, 0.9)); border: 1px solid rgba(48, 209, 88, 0.3); border-radius: 16px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; backdrop-filter: blur(10px);">
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="font-size: 1.2rem;">🚨</span>
           <span style="color: #f5f5f7; font-size: 0.85rem;"><strong>Equipa Frigomatik em Trânsito:</strong> Apenas <span id="vagas-count" style="color: #30d158; font-weight: 700;">2</span> carrinhas de intervenção urgente disponíveis neste momento na região.</span>
         </div>
-        <a href="tel:351931369411" style="background: #30d158; color: #000; padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(48,209,88,0.3);">Ligar Piquete Frigomatik</a>
+        <a href="tel:+351931369411" style="background: #30d158; color: #000; padding: 8px 16px; border-radius: 10px; font-size: 0.82rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(48,209,88,0.3);">Ligar Piquete 931 369 411</a>
       </div>
     </div>
 
     <!-- SIMULADOR DE COBERTURA RESTAURAÇÃO/HOTELARIA -->
-    <div style="margin: 20px 0; padding: 24px; background: rgba(20, 20, 22, 0.9); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; backdrop-filter: blur(20px);">
+    <div class="interactive-box">
       <div style="text-align: center; margin-bottom: 16px;">
-        <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">📍 Validar Disponibilidade por Zona Comercial</h3>
-        <p style="color: #86868b; font-size: 0.82rem;">Selecione a localização do seu restaurante, hotel ou comércio:</p>
+        <h2 style="color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px;">📍 Validar Disponibilidade por Zona Comercial</h2>
+        <p style="color: #86868b; font-size: 0.85rem;">Selecione a localização do seu restaurante, hotel ou comércio:</p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px;">
-        <button onclick="checkZone('Lisboa / Baixa / Chiado / Parque das Nações')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;">📍 Lisboa Centro / Baixa</button>
-        <button onclick="checkZone('Loures / Odivelas')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;">📍 Loures / Odivelas</button>
-        <button onclick="checkZone('Sintra / Amadora')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;">📍 Sintra / Amadora</button>
-        <button onclick="checkZone('Cascais / Oeiras / Estoril')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;">📍 Cascais / Oeiras</button>
-        <button onclick="checkZone('Margem Sul (Almada / Seixal / Setúbal)')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer;">📍 Margem Sul</button>
+        <button type="button" class="interactive-btn" onclick="checkZone('Lisboa / Baixa / Chiado / Parque das Nações')">📍 Lisboa Centro / Baixa</button>
+        <button type="button" class="interactive-btn" onclick="checkZone('Loures / Odivelas')">📍 Loures / Odivelas</button>
+        <button type="button" class="interactive-btn" onclick="checkZone('Sintra / Amadora')">📍 Sintra / Amadora</button>
+        <button type="button" class="interactive-btn" onclick="checkZone('Cascais / Oeiras / Estoril')">📍 Cascais / Oeiras</button>
+        <button type="button" class="interactive-btn" onclick="checkZone('Margem Sul (Almada / Seixal / Setúbal)')">📍 Margem Sul</button>
       </div>
 
       <div id="zone-result" style="display: none; background: rgba(48, 209, 88, 0.1); border: 1px solid rgba(48, 209, 88, 0.2); padding: 12px; border-radius: 12px; text-align: center; color: #30d158; font-size: 0.85rem; font-weight: 600;">
@@ -681,20 +855,13 @@
     </div>
 
     <!-- WIDGET DE PÂNICO E RISCO DE MERCADORIA -->
-    <style>
-      .panic-box { background: linear-gradient(135deg, rgba(255, 69, 58, 0.14), rgba(18, 18, 22, 0.95)); border: 1px solid rgba(255, 69, 58, 0.45); padding: 30px; border-radius: 20px; text-align: center; margin: 30px auto; max-width: 1000px; backdrop-filter: blur(20px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7); }
-      .scarcity-pill { background: rgba(255, 69, 58, 0.22); color: #ff9f0a; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(255, 69, 58, 0.35); }
-      .panic-btn { display: inline-block; background: #30d158; color: #000; padding: 18px 36px; border-radius: 14px; font-weight: 800; text-decoration: none; font-size: 1.15rem; margin-top: 15px; box-shadow: 0 6px 25px rgba(48, 209, 88, 0.5); text-transform: uppercase; transition: 0.2s; }
-      .panic-btn:hover { transform: scale(1.03); }
-    </style>
-
     <div class="panic-box">
-      <div class="scarcity-pill">⚠️ URGÊNCIA HOTELARIA & RESTAURAÇÃO</div>
-      <h3 style="color: #fff; margin-top: 5px; font-size: 1.35rem;">A câmara ou bancada parou de gelar? Não perca o stock do seu negócio</h3>
-      <p style="color: #d1d1d6; margin-bottom: 10px;">Na Frigomatik sabemos o impacto financeiro de perder matérias-primas e ter de fechar portas. O nosso piquete industrial atua imediatamente para diagnosticar compressores, fugas de gás e sistemas de descongelação.</p>
-      <a href="tel:351931369411" class="panic-btn">📞 Chamar Piquete de Urgência Frigomatik</a>
+      <div class="scarcity-pill">⚠️ URGÊNCIA HOTELARIA &amp; RESTAURAÇÃO</div>
+      <h2 style="color: #fff; margin-top: 5px; font-size: 1.35rem;">A câmara ou bancada parou de gelar? Não perca o stock do seu negócio</h2>
+      <p style="color: #d1d1d6; margin-bottom: 10px; margin-top: 8px;">Na Frigomatik sabemos o impacto financeiro de perder matérias-primas e ter de fechar portas. O nosso piquete industrial atua imediatamente para diagnosticar compressores, fugas de gás e sistemas de descongelação.</p>
+      <a href="tel:+351931369411" class="panic-btn">📞 Chamar Piquete de Urgência Frigomatik</a>
       <div style="margin-top: 14px; font-size: 0.85rem; color: #86868b;">
-        Enviar fotos da chapa de características e controlador por WhatsApp? <a href="https://wa.me/351931369411?text=Olá Frigomatik! Sou um estabelecimento comercial e preciso de assistência técnica urgente." target="_blank" style="color: #30d158; text-decoration: none; font-weight: 700;">Enviar Mensagem WhatsApp 931 369 411</a>
+        Enviar fotos da chapa de características e controlador por WhatsApp? <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Sou%20um%20estabelecimento%20comercial%20e%20preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica%20urgente." target="_blank" rel="noopener noreferrer" style="color: #30d158; text-decoration: none; font-weight: 700;">Enviar Mensagem WhatsApp 931 369 411</a>
       </div>
     </div>
 
@@ -716,17 +883,17 @@
     <div class="bento">
       <!-- MATRIZ DE EQUIPAMENTOS & MARCAS INDUSTRIAIS -->
       <div class="card col-12">
-        <div class="card-title"><span class="icon">🏬</span> Matriz de Equipamentos de Hotelaria & Marcas Suportadas</div>
+        <div class="card-title"><span class="icon">🏬</span> Matriz de Equipamentos de Hotelaria &amp; Marcas Suportadas</div>
         <p style="color: var(--text-sub); font-size: 0.95rem; margin-top: 6px;">
           Selecione o tipo de equipamento para verificar o suporte especializado Frigomatik em Portugal:
         </p>
         <div class="matrix-tabs">
-          <button class="matrix-tab active" onclick="switchMatrix(event, 'camaras')">❄️ Câmaras Frigoríficas</button>
-          <button class="matrix-tab" onclick="switchMatrix(event, 'bancadas')">🧊 Bancadas & Armários Inox</button>
-          <button class="matrix-tab" onclick="switchMatrix(event, 'vitrines')">🏪 Vitrines & Ilhas</button>
-          <button class="matrix-tab" onclick="switchMatrix(event, 'gelo')">🧊 Máquinas de Gelo</button>
-          <button class="matrix-tab" onclick="switchMatrix(event, 'abatedores')">⚡ Abatedores</button>
-          <button class="matrix-tab" onclick="switchMatrix(event, 'lavagem')">🍽️ Lavagem Industrial</button>
+          <button type="button" class="matrix-tab active" onclick="switchMatrix(event, 'camaras')">❄️ Câmaras Frigoríficas</button>
+          <button type="button" class="matrix-tab" onclick="switchMatrix(event, 'bancadas')">🧊 Bancadas &amp; Armários Inox</button>
+          <button type="button" class="matrix-tab" onclick="switchMatrix(event, 'vitrines')">🏪 Vitrines &amp; Ilhas</button>
+          <button type="button" class="matrix-tab" onclick="switchMatrix(event, 'gelo')">🧊 Máquinas de Gelo</button>
+          <button type="button" class="matrix-tab" onclick="switchMatrix(event, 'abatedores')">⚡ Abatedores</button>
+          <button type="button" class="matrix-tab" onclick="switchMatrix(event, 'lavagem')">🍽️ Lavagem Industrial</button>
         </div>
 
         <div class="matrix-content">
@@ -840,7 +1007,7 @@
         </div>
       </div>
 
-      <!-- PROCESS EM 3 PASSOS COMERCIAL -->
+      <!-- PROCESSO EM 3 PASSOS COMERCIAL -->
       <div class="card col-12">
         <div class="card-title">
           <span class="icon">📲</span> Como Agendar a Intervenção no seu Estabelecimento Comercial
@@ -848,7 +1015,7 @@
         <div class="steps-grid">
           <div class="step-box">
             <div class="step-num">Passo 1</div>
-            <strong style="color: #fff;">Contacto & Envio de Dados</strong>
+            <strong style="color: #fff;">Contacto &amp; Envio de Dados</strong>
             <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Envie foto da chapa técnica e sintoma da avaria para o WhatsApp Frigomatik <strong>931 369 411</strong>.</p>
           </div>
           <div class="step-box">
@@ -858,7 +1025,7 @@
           </div>
           <div class="step-box">
             <div class="step-num">Passo 3</div>
-            <strong style="color: #fff;">Reparação no Local & Faturação</strong>
+            <strong style="color: #fff;">Reparação no Local &amp; Faturação</strong>
             <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Resolução do problema com garantia escrita Frigomatik e relatório de intervenção comercial.</p>
           </div>
         </div>
@@ -875,21 +1042,21 @@
             placeholder="🔍 Filtrar por concelho ou zona (ex: Lisboa, Parque das Nações, Cascais, Sintra, Almada, Loures, Oeiras...)" onkeyup="filterLocations()">
 
           <div class="locations-grid" id="locationsGrid">
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Sou da zona de Lisboa e preciso de reparação urgente de frio industrial" class="location-pill" target="_blank">📍 Reparação de Câmaras e Frio Comercial em Lisboa</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Sou da zona de Lisboa (Baixa/Chiado) e preciso de assistência técnica" class="location-pill" target="_blank">📍 Assistência Frio Hotelaria na Baixa / Chiado</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Sou do Parque das Nações e tenho avaria em equipamento de hotelaria" class="location-pill" target="_blank">📍 Piquete Frio Industrial no Parque das Nações</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de técnico para câmara frigorífica em Cascais" class="location-pill" target="_blank">📍 Reparação de Câmaras Frigoríficas em Cascais</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho bancada refrigerada avariada no Estoril" class="location-pill" target="_blank">📍 Assistência Bancadas Refrigeradas no Estoril</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de reparação de frio comercial em Sintra" class="location-pill" target="_blank">📍 Assistência Técnica Frio Comercial em Sintra</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho máquina de gelo avariada em Algueirão-Mem Martins" class="location-pill" target="_blank">📍 Reparação Máquinas de Gelo em Sintra</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de piquete de frio industrial em Oeiras" class="location-pill" target="_blank">📍 Reparação Frio Industrial e Hotelaria em Oeiras</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho vitrine refrigerada avariada em Paço de Arcos" class="location-pill" target="_blank">📍 Manutenção de Vitrines em Paço de Arcos</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de reparações de restauração em Loures" class="location-pill" target="_blank">📍 Assistência Frio Restaurantes em Loures</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho avaria em armário inox em Odivelas" class="location-pill" target="_blank">📍 Reparação de Armários Frigoríficos em Odivelas</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de assistência para talho/restaurante em Almada" class="location-pill" target="_blank">📍 Reparação de Frio Industrial em Almada</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho câmara de congelação avariada no Seixal" class="location-pill" target="_blank">📍 Reparação de Câmaras de Congelação no Seixal</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Tenho avaria comercial no Montijo / Barreiro" class="location-pill" target="_blank">📍 Técnico de Frio Comercial no Barreiro e Montijo</a>
-            <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de assistência em equipamento hotelaria em Amadora" class="location-pill" target="_blank">📍 Assistência a Equipamentos de Hotelaria na Amadora</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Sou%20da%20zona%20de%20Lisboa%20e%20preciso%20de%20repara%C3%A7%C3%A3o%20urgente%20de%20frio%20industrial" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação de Câmaras e Frio Comercial em Lisboa</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Sou%20da%20zona%20de%20Lisboa%20%28Baixa/Chiado%29%20e%20preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Assistência Frio Hotelaria na Baixa / Chiado</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Sou%20do%20Parque%20das%20Na%C3%A7%C3%B5es%20e%20tenho%20avaria%20em%20equipamento%20de%20hotelaria" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Piquete Frio Industrial no Parque das Nações</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20t%C3%A9cnico%20para%20c%C3%A2mara%20frigor%C3%ADfica%20em%20Cascais" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação de Câmaras Frigoríficas em Cascais</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20bancada%20refrigerada%20avariada%20no%20Estoril" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Assistência Bancadas Refrigeradas no Estoril</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20repara%C3%A7%C3%A3o%20de%20frio%20comercial%20em%20Sintra" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Assistência Técnica Frio Comercial em Sintra</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20m%C3%A1quina%20de%20gelo%20avariada%20em%20Algueir%C3%A3o-Mem%20Martins" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação Máquinas de Gelo em Sintra</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20piquete%20de%20frio%20industrial%20em%20Oeiras" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação Frio Industrial e Hotelaria em Oeiras</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20vitrine%20refrigerada%20avariada%20em%20Pa%C3%A7o%20de%20Arcos" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Manutenção de Vitrines em Paço de Arcos</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20repara%C3%A7%C3%B5es%20de%20restaura%C3%A7%C3%A3o%20em%20Loures" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Assistência Frio Restaurantes em Loures</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20avaria%20em%20arm%C3%A1rio%20inox%20em%20Odivelas" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação de Armários Frigoríficos em Odivelas</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20assist%C3%AAncia%20para%20talho/restaurante%20em%20Almada" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação de Frio Industrial em Almada</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20c%C3%A2mara%20de%20congela%C3%A7%C3%A3o%20avariada%20no%20Seixal" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Reparação de Câmaras de Congelação no Seixal</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Tenho%20avaria%20comercial%20no%20Montijo%20/%20Barreiro" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Técnico de Frio Comercial no Barreiro e Montijo</a>
+            <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20assist%C3%AAncia%20em%20equipamento%20hotelaria%20em%20Amadora" class="location-pill" target="_blank" rel="noopener noreferrer">📍 Assistência a Equipamentos de Hotelaria na Amadora</a>
           </div>
         </div>
       </div>
@@ -897,48 +1064,20 @@
 
     <!-- FOOTER -->
     <footer>
-      <p><strong>FRIGOMATIK - REFRIGERAÇÃO INDUSTRIAL & HOTELARIA ®</strong></p>
+      <p><strong>FRIGOMATIK - REFRIGERAÇÃO INDUSTRIAL &amp; HOTELARIA ®</strong></p>
       <p style="margin-top: 6px;">Especialistas em Refrigeração Comercial, Câmaras Frigoríficas e Equipamentos de Hotelaria em Lisboa e Margem Sul.</p>
-      <p style="margin-top: 4px; color: #666;">Piquete Frigomatik 24H: 931 369 411 / 931 369 411</p>
+      <p style="margin-top: 6px; color: #86868b;">Piquete Frigomatik 24H: <a href="tel:+351931369411" style="color: #30d158; text-decoration: none; font-weight: 700;">931 369 411</a></p>
     </footer>
   </div>
 
   <!-- POP-UP DINÂMICO DE URGÊNCIA COMERCIAL -->
-  <div id="service-popup" style="position: fixed; top: 80px; right: 20px; background: rgba(20, 20, 22, 0.92); border: 1px solid rgba(255, 255, 255, 0.12); color: #f5f5f7; padding: 12px 18px; border-radius: 16px; font-size: 0.85rem; z-index: 9999; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 10px; max-width: 320px;">
-    <span style="width: 8px; height: 8px; background: #30d158; border-radius: 50%; box-shadow: 0 0 8px #30d158; flex-shrink: 0;"></span>
+  <div id="service-popup">
+    <span class="status-dot"></span>
     <span><strong id="popup-count">14</strong> estabelecimentos assistidos pela Frigomatik na região nas últimas 24h.</span>
+    <button type="button" onclick="document.getElementById('service-popup').style.display='none'" style="background:none;border:none;color:#86868b;cursor:pointer;font-size:0.95rem;padding-left:4px;" aria-label="Fechar aviso">✕</button>
   </div>
 
   <!-- PROVA SOCIAL DINÂMICA RESTAURAÇÃO/HOTELARIA -->
-  <style>
-    #social-proof-popup {
-      position: fixed;
-      bottom: 25px;
-      left: 25px;
-      z-index: 9999;
-      background: #1e293b;
-      border: 1px solid rgba(48, 209, 88, 0.4);
-      border-left: 5px solid #30d158;
-      color: #f8fafc;
-      padding: 15px 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-      max-width: 340px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: none;
-    }
-    #social-proof-popup.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-  </style>
-
   <div id="social-proof-popup">
     <div style="font-size: 24px; background: rgba(48, 209, 88, 0.15); padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; min-width: 45px; min-height: 45px;">🏬</div>
     <div>
@@ -949,16 +1088,16 @@
   </div>
 
   <!-- WIDGET ASSISTENTE VIRTUAL HOTELARIA -->
-  <div id="ai-assistant-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9998;">
-    <button onclick="toggleAiChat()" style="background: #1c1c1e; border: 1px solid rgba(255,255,255,0.2); color: #f5f5f7; padding: 12px 18px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(20px);">
-      <span style="width: 10px; height: 10px; background: #30d158; border-radius: 50%; box-shadow: 0 0 10px #30d158;"></span>
+  <div id="ai-assistant-widget">
+    <button type="button" onclick="toggleAiChat()" style="background: #1c1c1e; border: 1px solid rgba(255,255,255,0.2); color: #f5f5f7; padding: 12px 18px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(20px);">
+      <span class="status-dot"></span>
       <span style="font-size: 0.85rem; font-weight: 600;">Assistente Frigomatik 24H</span>
     </button>
 
-    <div id="ai-chat-box" style="display: none; position: absolute; bottom: 65px; right: 0; width: 330px; background: rgba(20, 20, 22, 0.96); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.7); backdrop-filter: blur(25px); color: #f5f5f7;">
+    <div id="ai-chat-box" style="display: none; position: absolute; bottom: 60px; right: 0; width: 320px; max-width: calc(100vw - 28px); background: rgba(20, 20, 22, 0.96); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.7); backdrop-filter: blur(25px); color: #f5f5f7;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
         <span style="font-size: 0.8rem; font-weight: 700; color: #30d158;">⚡ ATENDIMENTO FRIGOMATIK 24H</span>
-        <button onclick="toggleAiChat()" style="background: none; border: none; color: #86868b; cursor: pointer; font-size: 1rem;">✕</button>
+        <button type="button" onclick="toggleAiChat()" style="background: none; border: none; color: #86868b; cursor: pointer; font-size: 1rem;">✕</button>
       </div>
       
       <div style="font-size: 0.82rem; color: #d1d1d6; margin-bottom: 12px; line-height: 1.4;">
@@ -966,31 +1105,30 @@
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 6px;">
-        <button onclick="sendWhatsApp('Câmara Frigorífica / Congelação')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">❄️ Câmara Frigorífica / Congelação</button>
-        <button onclick="sendWhatsApp('Bancada Inox / Armário Comercial')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🧊 Bancada / Armário Inox</button>
-        <button onclick="sendWhatsApp('Máquina de Gelo Industrial')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🧊 Máquina de Gelo Industrial</button>
-        <button onclick="sendWhatsApp('Vitrine Refrigerada / Abatedor / Outros')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🛠️ Vitrine / Abatedor / Lavagem</button>
+        <button type="button" onclick="sendWhatsApp('Câmara Frigorífica / Congelação')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">❄️ Câmara Frigorífica / Congelação</button>
+        <button type="button" onclick="sendWhatsApp('Bancada Inox / Armário Comercial')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🧊 Bancada / Armário Inox</button>
+        <button type="button" onclick="sendWhatsApp('Máquina de Gelo Industrial')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🧊 Máquina de Gelo Industrial</button>
+        <button type="button" onclick="sendWhatsApp('Vitrine Refrigerada / Abatedor / Outros')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; text-align: left; cursor: pointer;">🛠️ Vitrine / Abatedor / Lavagem</button>
       </div>
 
       <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.72rem; color: #86868b; text-align: center;">
-        Urgência de piquete comercial? Ligue: <a href="tel:351931369411" style="color: #30d158; text-decoration: none; font-weight: 700;">931 369 411</a>
+        Urgência de piquete comercial? Ligue: <a href="tel:+351931369411" style="color: #30d158; text-decoration: none; font-weight: 700;">931 369 411</a>
       </div>
     </div>
   </div>
 
   <!-- BARRA FIXA PARA TELEMÓVEIS -->
   <div class="mobile-sticky-bar">
-    <a href="https://wa.me/351931369411?text=Olá Frigomatik! Preciso de assistência técnica urgente em frio industrial." class="bar-whatsapp" target="_blank">
+    <a href="https://wa.me/351931369411?text=Ol%C3%A1%20Frigomatik%21%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica%20urgente%20em%20frio%20industrial." class="bar-whatsapp" target="_blank" rel="noopener noreferrer">
       💬 WhatsApp Frio 24h
     </a>
-    <a href="tel:931369411" class="bar-phone">
+    <a href="tel:+351931369411" class="bar-phone">
       📞 Ligar 931 369 411
     </a>
   </div>
 
   <!-- SCRIPTS JS -->
   <script>
-    // Tab Matrix Switcher
     function switchMatrix(evt, categoryId) {
       const tabs = document.querySelectorAll('.matrix-tab');
       const panels = document.querySelectorAll('.matrix-panel');
@@ -1000,12 +1138,11 @@
 
       evt.currentTarget.classList.add('active');
       const activePanel = document.getElementById(categoryId);
-      if(activePanel) {
+      if (activePanel) {
         activePanel.classList.add('active');
       }
     }
 
-    // Filter Locations
     function filterLocations() {
       const input = document.getElementById('locationSearch');
       const filter = input.value.toLowerCase();
@@ -1014,15 +1151,10 @@
 
       for (let i = 0; i < pills.length; i++) {
         const text = pills[i].textContent || pills[i].innerText;
-        if (text.toLowerCase().indexOf(filter) > -1) {
-          pills[i].style.display = "";
-        } else {
-          pills[i].style.display = "none";
-        }
+        pills[i].style.display = text.toLowerCase().indexOf(filter) > -1 ? "" : "none";
       }
     }
 
-    // Interactive Functions
     function toggleAiChat() {
       const box = document.getElementById('ai-chat-box');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -1030,22 +1162,21 @@
 
     function sendWhatsApp(serviceType) {
       const text = encodeURIComponent("Olá Frigomatik! Sou um cliente comercial e preciso de assistência urgente em: " + serviceType);
-      window.open("https://wa.me/351931369411?text=" + text, "_blank");
+      window.open("https://wa.me/351931369411?text=" + text, "_blank", "noopener,noreferrer");
       toggleAiChat();
     }
 
     function sendDiagnostic(diagnosticType) {
       const text = encodeURIComponent("Olá Frigomatik! Fiz o diagnóstico no site para a minha empresa. Sintoma/Avaria: " + diagnosticType);
-      window.open("https://wa.me/351931369411?text=" + text, "_blank");
+      window.open("https://wa.me/351931369411?text=" + text, "_blank", "noopener,noreferrer");
     }
 
     function checkZone(zoneName) {
       const resultBox = document.getElementById("zone-result");
       resultBox.style.display = "block";
-      resultBox.innerHTML = "✅ Unidade móvel Frigomatik em <strong>" + zoneName + "</strong> pronta para intervenção urgente! <br><a href='https://wa.me/351931369411?text=" + encodeURIComponent("Olá Frigomatik! Confirmei a disponibilidade comercial para " + zoneName + " e preciso de assistência urgente.") + "' target='_blank' style='color: #fff; text-decoration: underline;'>Clique para agendar no WhatsApp</a> ou ligue para <strong>931 369 411</strong>.";
+      resultBox.innerHTML = "✅ Unidade móvel Frigomatik em <strong>" + zoneName + "</strong> pronta para intervenção urgente! <br><a href='https://wa.me/351931369411?text=" + encodeURIComponent("Olá Frigomatik! Confirmei a disponibilidade comercial para " + zoneName + " e preciso de assistência urgente.") + "' target='_blank' rel='noopener noreferrer' style='color: #fff; text-decoration: underline;'>Clique para agendar no WhatsApp</a> ou ligue para <a href='tel:+351931369411' style='color: #30d158; font-weight: 700; text-decoration: none;'>931 369 411</a>.";
     }
 
-    // Prova Social Aleatória focada em Restaurantes e Comercial
     const baseIntervencoes = [
       { nome: "Restaurante O Marisco", zona: "Cascais", acao: "resolveu a avaria no compressor da câmara de congelação com a Frigomatik", tempo: "Há 14 minutos" },
       { nome: "Pastelaria Central", zona: "Lisboa (Baixa)", acao: "substituiu o ventilador do armário refrigerado inox com a Frigomatik", tempo: "Há 22 minutos" },
@@ -1073,7 +1204,7 @@
       const msgElement = document.getElementById('sp-message');
       const timeElement = document.getElementById('sp-timeago');
 
-      if(popup && msgElement && timeElement) {
+      if (popup && msgElement && timeElement) {
         const atual = intervencoesAtuais[currentIndex];
         msgElement.innerHTML = `O <strong>${atual.nome}</strong> (${atual.zona}) ${atual.acao}.`;
         timeElement.innerText = atual.tempo;
@@ -1089,18 +1220,15 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-      // Contador pop-up
       const randomCount = Math.floor(Math.random() * (28 - 12)) + 12;
       const countElement = document.getElementById("popup-count");
       if (countElement) countElement.textContent = randomCount;
 
-      // Escassez de vagas
       const vagas = [1, 2, 3];
       const randomVaga = vagas[Math.floor(Math.random() * vagas.length)];
       const vagaEl = document.getElementById("vagas-count");
-      if(vagaEl) vagaEl.textContent = randomVaga;
+      if (vagaEl) vagaEl.textContent = randomVaga;
 
-      // Início da prova social
       setTimeout(() => {
         mostrarPopup();
         setInterval(mostrarPopup, 18000);
